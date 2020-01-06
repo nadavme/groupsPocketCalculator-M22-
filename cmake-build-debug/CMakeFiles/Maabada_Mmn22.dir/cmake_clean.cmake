@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Maabada_Mmn22.dir/main.c.o"
+  "Maabada_Mmn22.exe"
   "Maabada_Mmn22.pdb"
-  "Maabada_Mmn22"
+  "libMaabada_Mmn22.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/Maabada_Mmn22.dir/main.c.o  -o Maabada_Mmn22 
+C:/cygwin64/bin/gcc.exe -g  -Wl,--enable-auto-import CMakeFiles/Maabada_Mmn22.dir/main.c.o  -o Maabada_Mmn22.exe -Wl,--out-implib,libMaabada_Mmn22.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

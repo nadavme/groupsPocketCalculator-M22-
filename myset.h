@@ -5,4 +5,7 @@
 #ifndef MAABADA_MMN22_MYSET_H
 #define MAABADA_MMN22_MYSET_H
 
+#include "string.h"
+#include "stdio.h"
+#include "stdlib.h"
 #endif //MAABADA_MMN22_MYSET_H
