@@ -1,0 +1,3 @@
+/cs/usr/nadav.meidan/Downloads/TheOpenUniversity/Maabada-Mmn22/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cs/usr/nadav.meidan/Downloads/TheOpenUniversity/Maabada-Mmn22/cmake-build-debug/CMakeFiles/Maabada_Mmn22.dir
+/cs/usr/nadav.meidan/Downloads/TheOpenUniversity/Maabada-Mmn22/cmake-build-debug/CMakeFiles/edit_cache.dir
