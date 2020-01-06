@@ -28,6 +28,7 @@ int main(int numArgs, char* argv[])
             valuesList[i] = argv[i];
             i++;
         }
+        valuesList[i] = -1;
         read_set(argv[0], valuesList);
     }
     else
@@ -45,21 +46,24 @@ int main(int numArgs, char* argv[])
         } else switch
                 case numArgs != 3:
                     {
-                        
+                        printf("Error: 3 sets were expected. Enter your new order or stop.")
                     }
                 case argv[0] == 'union_set':
                     {
-
+                        union_set(argv[1], argv[2], argv[3]);
                     }
                 case argv[0] == 'intersect_set':
                     {
-
+                        intersect_set(argv[1], argv[2], argv[3]);
                     }
                 case argv[0} == 'sub_set':
                     {
-
+                        sub_set(argv[1], argv[2], argv[3]);
                     }
                 case argv[0] == 'symdiff_set':
+                    {
+                        symdiff_set(argv[1], argv[2], argv[3]);
+                    }
 
 
         while(i < numArgs)
