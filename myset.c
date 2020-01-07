@@ -33,7 +33,7 @@ int main(int numArgs, char* argv[])
     else
         if(argv[0] == 'print_set')
         {
-            if(argv[1][0] = -1) printf("The set is empty");
+            if(argv[1][0] == -1) printf("The set is empty");
             else
             {
                 while(k < strlen(argv[0]))
@@ -42,27 +42,29 @@ int main(int numArgs, char* argv[])
                     k++;
                 }
             }
-        } else switch
-                case numArgs != 3:
-                    {
-                        printf("Error: 3 sets were expected. Enter your new order or stop.")
-                    }
-                case argv[0] == 'union_set':
+        } else
+            if (numArgs != 3) printf("Error: 3 sets were expected. Enter your new order or stop.");
+            else
+            {
+                switch (argv[0])
+                {
+                    case 'union_set':
                     {
                         union_set(argv[1], argv[2], argv[3]);
                     }
-                case argv[0] == 'intersect_set':
+                    case 'intersect_set':
                     {
                         intersect_set(argv[1], argv[2], argv[3]);
                     }
-                case argv[0} == 'sub_set':
+                    case 'sub_set':
                     {
                         sub_set(argv[1], argv[2], argv[3]);
                     }
-                case argv[0] == 'symdiff_set':
+                    case 'symdiff_set':
                     {
                         symdiff_set(argv[1], argv[2], argv[3]);
                     }
+                }
 
 
         while(i < numArgs)
