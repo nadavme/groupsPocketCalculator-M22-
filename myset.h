@@ -8,4 +8,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "stdlib.h"
+
+set SETA, SETB, SETC, SETD, SETE, SETF;
+
 #endif //MAABADA_MMN22_MYSET_H

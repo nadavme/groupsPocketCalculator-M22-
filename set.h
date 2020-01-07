@@ -5,13 +5,10 @@
 #ifndef MAABADA_MMN22_SET_H
 #define MAABADA_MMN22_SET_H
 
-typedef set
-{
-    char arr[16];
-};
+typedef char set[16];
 
 
-void read_set(char[] input, args);
+void read_set(char input[], args);
 void print_set(set set);
 void union_set(set a, set b, set c);
 void intersect_set(set a, set b, set c);

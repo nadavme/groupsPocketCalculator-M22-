@@ -4,7 +4,6 @@
 #include "set.h"
 #include "myset.h"
 
-set SETA, SETB. SETC, SETD, SETE, SETF;
 
 void initiate(set set)
 {
