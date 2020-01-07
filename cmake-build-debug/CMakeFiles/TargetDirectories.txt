@@ -1,3 +1,0 @@
-/cygdrive/c/Users/nadav/OneDrive/Desktop/Maabada-Mmn22/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/nadav/OneDrive/Desktop/Maabada-Mmn22/cmake-build-debug/CMakeFiles/Maabada_Mmn22.dir
-/cygdrive/c/Users/nadav/OneDrive/Desktop/Maabada-Mmn22/cmake-build-debug/CMakeFiles/edit_cache.dir
