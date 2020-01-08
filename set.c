@@ -4,9 +4,18 @@
 
 #include "set.h"
 
-void read_set(char[] input, args)
+void read_set(set set,char* elemensts[] +2, int argc -2)//are parameters correct??
 {
+int i,bit;
+long byte;
+unsigned char a = 1; // I need to check if the binary representation of this is 00000001
 
+for(i=0;i<argc)
+{
+byte = (strtoul(elements[i],,10)+1)/8; // finding the relevant byte
+bit = (strtoul(elements[i],,10)+)%8;//finding the relevant bit
+set[byte] = set[byte]|(a<<bit-1);// I need to check this
+}
 }
 
 void print_set(set set)
