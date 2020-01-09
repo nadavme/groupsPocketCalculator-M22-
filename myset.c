@@ -17,7 +17,7 @@ void initiate(set set)
 int main(int numArgs, char* argv[])
 {
     int k = 0;
-    int i = 1;
+    int i = 2;
     char valuesList[128];
     printf("Hello,please enter an order and sets\n");
     if (argv[0] == 'read_set')
@@ -28,7 +28,7 @@ int main(int numArgs, char* argv[])
             i++;
         }
         valuesList[i] = -1;
-        read_set(argv[0], valuesList);
+        read_set(argv[0], valuesList[]);
     }
     else
         if(argv[0] == 'print_set')
