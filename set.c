@@ -4,6 +4,22 @@
 
 #include "set.h"
 
+
+void print_set(set set, char valuesList, int numArgs)
+{
+    int k = 2;
+    if(valuesList[0] == -1) printf("The set is empty");
+    else
+    {
+        while(k < numArgs - 2)
+        {
+            printf("%d, ", valuesList[k]);
+            k++;
+        }
+    }
+}
+
+
 void read_set(set set,char valuesList[])
 {
 int i,bit;
@@ -19,10 +35,6 @@ while(valuesList[i] != -1)
     }
 }
 
-void print_set(set set)
-{
-
-}
 
 void union_set(set a, set b, set c);
 {

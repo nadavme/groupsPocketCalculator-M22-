@@ -12,13 +12,24 @@ typedef char set[16];
  * @param set
  * @param valuesList
  */
+
+/*!
+ *
+ * @param a
+ */
+void print_set(set a, char valuesList[], int numArgs);
+
+/*!
+ *
+ * @param set
+ * @param valuesList
+ */
 void read_set(set set, char valuesList[]);
 
 /*!
  *
  * @param set
  */
-void print_set(set set);
 
 /*!
  *
