@@ -8,7 +8,7 @@
 typedef char set[16];
 
 
-void read_set(char input[], args[]);
+void read_set(set set, char valuesList[]);
 void print_set(set set);
 void union_set(set a, set b, set c);
 void intersect_set(set a, set b, set c);

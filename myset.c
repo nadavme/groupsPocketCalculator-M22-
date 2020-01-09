@@ -28,9 +28,10 @@ int main(int numArgs, char* argv[])
             i++;
         }
         valuesList[i] = -1;
-        read_set(argv[0], valuesList[]);
+        read_set(argv[0], valuesList);
     }
     else
+    {
         if(argv[0] == 'print_set')
         {
             if(argv[1][0] == -1) printf("The set is empty");
@@ -42,36 +43,28 @@ int main(int numArgs, char* argv[])
                     k++;
                 }
             }
-        } else
+        } else {
             if (numArgs != 3) printf("Error: 3 sets were expected. Enter your new order or stop.");
-            else
-            {
-                switch (argv[0])
-                {
-                    case 'union_set':
-                    {
-                        union_set(argv[1], argv[2], argv[3]);
-                    }
-                    case 'intersect_set':
-                    {
-                        intersect_set(argv[1], argv[2], argv[3]);
-                    }
-                    case 'sub_set':
-                    {
-                        sub_set(argv[1], argv[2], argv[3]);
-                    }
-                    case 'symdiff_set':
-                    {
-                        symdiff_set(argv[1], argv[2], argv[3]);
-                    }
+            else {
+                if (argv[0] == 'union_set') {
+                    union_set(argv[1], argv[2], argv[3]);
                 }
+                if (argv[0] == 'intersect_set') {
+                    intersect_set(argv[1], argv[2], argv[3]);
+                }
+                if (argv[0] == 'sub_set') {
+                    sub_set(argv[1], argv[2], argv[3]);
+                }
+                if (argv[0] == 'symdiff_set') {
+                    symdiff_set(argv[1], argv[2], argv[3]);
+                }
+            }
 
 
-        while(i < numArgs)
-        {
-            if(argv[i]!= NULL)
-            {
+            while (i < numArgs) {
+                if (argv[i] != NULL) {
 
+                }
             }
         }
     }
