@@ -5,8 +5,19 @@
 #include "myset.h"
 
 
-void initiate(set set)
+
+
+void setsInitiator()
 {
+    initiate(SETA);
+    initiate(SETB);
+    initiate(SETC);
+    initiate(SETD);
+    initiate(SETE);
+    initiate(SETF);
+}
+
+void initiate(char *set) {
     int i;
     for (i = 0; i < 16; i++)
     {
@@ -14,8 +25,10 @@ void initiate(set set)
     }
 }
 
+
 int main(int numArgs, char* argv[])
 {
+    setsInitiator();
     int k = 2;
     int i = 2;
     char valuesList[128];

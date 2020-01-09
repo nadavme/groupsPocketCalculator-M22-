@@ -11,4 +11,15 @@
 
 set SETA, SETB, SETC, SETD, SETE, SETF;
 
+/*!
+ *
+ * @param set
+ */
+void initiate(set set);
+
+
+/*!
+ * 
+ */
+void setsInitiator();
 #endif //MAABADA_MMN22_MYSET_H
