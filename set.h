@@ -7,13 +7,54 @@
 
 typedef char set[16];
 
-
+/*!
+ *
+ * @param set
+ * @param valuesList
+ */
 void read_set(set set, char valuesList[]);
+
+/*!
+ *
+ * @param set
+ */
 void print_set(set set);
+
+/*!
+ *
+ * @param a
+ * @param b
+ * @param c
+ */
 void union_set(set a, set b, set c);
+
+/*!
+ *
+ * @param a
+ * @param b
+ * @param c
+ */
 void intersect_set(set a, set b, set c);
+
+/*!
+ *
+ * @param a
+ * @param b
+ * @param c
+ */
 void sub_set(set a, set b, set c);
+
+/*!
+ *
+ * @param a
+ * @param b
+ * @param c
+ */
 void symdiff_set(set a, set b, set c);
+
+/*!
+ *
+ */
 void stop();
 
 
