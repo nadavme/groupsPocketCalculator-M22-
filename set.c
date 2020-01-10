@@ -24,7 +24,7 @@ void read_set(set set,char valuesList[])
 {
 int i,bit;
 long byte;
-unsigned char a = 1; // I need to check if the binary representation of this is 00000001
+unsigned char a = 1;
 
 while(valuesList[i] != -1)
 {

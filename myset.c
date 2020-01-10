@@ -6,7 +6,9 @@
 
 
 
-
+/*!
+ *
+ */
 void setsInitiator()
 {
     initiate(SETA);
@@ -17,6 +19,11 @@ void setsInitiator()
     initiate(SETF);
 }
 
+
+/*!
+ *
+ * @param set
+ */
 void initiate(char *set) {
     int i;
     for (i = 0; i < 16; i++)
@@ -26,38 +33,67 @@ void initiate(char *set) {
 }
 
 
-int main(int numArgs, char* argv[])
-{
+
+void readLine(char* line, char* valuesList, int i) {
+    scanf("%s", line);
+
+    if (line[strlen(line) - 1] == '\n' || line[strlen(line) - 1] == ' ') line[strlen(line) - 1] = COMMA;
+
+    char *token = strtok(line, COMMA);
+
+    while (token != NULL)
+    {
+        valuesList[i] = token;
+        token = strtok(NULL, COMMA);
+    }
+}
+
+/*!
+ *
+ * @param numArgs
+ * @param argv
+ * @return
+ */
+int main(int numArgs, char* argv[]) {
     setsInitiator();
     int i = 2;
-    char valuesList[128];
+    char* valuesList[128];
+    char* line[80];
     printf("Hello,please enter an order and sets\n");
 
-                    if (argv[0] == 'read_set') read_set(argv[1], valuesList);
+    scanf("%s", line);
 
-                    if(argv[0] == 'print_set') print_set(argv[1], valuesList, numArgs);
+    if(line[strlen(line)-1] == '\n' || line[strlen(line)-1] == ' ') line[strlen(line)-1] = ',';
 
-                    if (numArgs != 3) printf("Error: 3 sets were expected. Enter your new order or stop.");
+    readLine( line, valuesList, i);
 
-                    else
-                        {
+    if (argv[0] == 'read_set') read_set(argv[1], valuesList);
 
-                            if (argv[0] == 'union_set') union_set(argv[1], argv[2], argv[3]);
+    if(argv[0] == 'print_set') print_set(argv[1], valuesList, numArgs);
 
-                            if (argv[0] == 'intersect_set') intersect_set(argv[1], argv[2], argv[3]);
+    if (numArgs != 3) printf("Error: 3 sets were expected. Enter your new order or stop.");
 
-                            if (argv[0] == 'sub_set') sub_set(argv[1], argv[2], argv[3]);
+    else
+        {
 
-                            if (argv[0] == 'symdiff_set') symdiff_set(argv[1], argv[2], argv[3]);
+        if (argv[0] == 'union_set') union_set(argv[1], argv[2], argv[3]);
 
-                        }
+        if (argv[0] == 'intersect_set') intersect_set(argv[1], argv[2], argv[3]);
+
+        if (argv[0] == 'sub_set') sub_set(argv[1], argv[2], argv[3]);
+
+        if (argv[0] == 'symdiff_set') symdiff_set(argv[1], argv[2], argv[3]);
+
+        }
 
 
-            while (i < numArgs) {
-                if (argv[i] != NULL) {
+    while (i < numArgs)
+    {
+        if (argv[i] != NULL)
+        {
 
-                }
-            }
+        }
+    }
 
 
     while(i < numArgs)
