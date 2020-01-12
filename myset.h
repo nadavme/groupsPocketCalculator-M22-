@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include "stdlib.h"
 
-set SETA, SETB, SETC, SETD, SETE, SETF;
 
 /*!
  * The function initiates the sets of size 16 to holds 0 in all cells(and therefor 000000000 bits of all byte
@@ -24,6 +23,13 @@ void initiate(set set);
  * The function takes all the six sets and initiates them together.
  */
 void setsInitiator();
+
+/*!
+ *
+ * @param line
+ */
+void commasReplacer(char* line);
+
 
 /*!
  * The function reads a command line and parse it to a command, a set/s to work on and values to add to the values list.
