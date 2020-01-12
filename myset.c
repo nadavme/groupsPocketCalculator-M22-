@@ -50,7 +50,7 @@ void readLine(char* line, char* valuesList)
     while (token != NULL)
     {
 //        valuesList[i] = *token;
-        strcpy( &valuesList[i], token );
+        strcpy(&valuesList[i], token);
         token = strtok(NULL, " ");
         i++;
     }
