@@ -12,6 +12,7 @@
 #include "stdlib.h"
 
 
+
 /*!
  * The function initiates the sets of size 16 to holds 0 in all cells(and therefor 000000000 bits of all byte
  * @param set is the set to initiate.
@@ -37,6 +38,6 @@ void commasReplacer(char* line);
  * @param valuesList will holds the values that were accepted in the input.
  * @param i is
  */
-void readLine(char* line, char *valuesList);
+void readLine(char* line, char* valuesList);
 
 #endif //MAABADA_MMN22_MYSET_H

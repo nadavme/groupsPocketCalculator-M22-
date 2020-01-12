@@ -41,7 +41,7 @@ void initiate(char *set) {
  * @param valuesList
  * @param i
  */
-void readLine(char* line, char *valuesList)
+void readLine(char* line, char* valuesList)
 {
     int i = 0;
     commasReplacer(line);
@@ -50,7 +50,7 @@ void readLine(char* line, char *valuesList)
     while (token != NULL)
     {
 //        valuesList[i] = *token;
-        strcpy(valuesList[i], token);
+        strcpy( &valuesList[i], token );
         token = strtok(NULL, " ");
         i++;
     }
