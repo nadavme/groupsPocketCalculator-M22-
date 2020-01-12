@@ -5,20 +5,25 @@
 #include "set.h"
 
 
-void print_set(set set, char valuesList, int numArgs)
+void print_set(set set)
 {
-    int k = 2;
-    if(valuesList[0] == -1) printf("The set is empty");
+    int i,j, counter = 0;
+    if(set[0] == -1) printf("The set is empty");
     else
     {
-        while(k < numArgs - 2)
+        while(i < 16)
         {
-            printf("%d, ", valuesList[k]);
-            k++;
+            while (j < 8)
+            {
+                if (counter > 15) printf("\n") && counter = 0;
+                if (bitNumberIsOn) printf("%d, ", (8*i)+j-1) && conter++;
+            }
         }
     }
 }
 
+
+bool bitNumberIsOn(char cell, int bit) return (cell&(1<<bit)) != 0;
 
 void read_set(set set,char valuesList[])
 {
