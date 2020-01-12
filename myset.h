@@ -14,23 +14,23 @@
 set SETA, SETB, SETC, SETD, SETE, SETF;
 
 /*!
- *
- * @param set
+ * The function initiates the sets of size 16 to holds 0 in all cells(and therefor 000000000 bits of all byte
+ * @param set is the set to initiate.
  */
 void initiate(set set);
 
 
 /*!
- *
+ * The function takes all the six sets and initiates them together.
  */
 void setsInitiator();
 
 /*!
- *
- * @param line
- * @param valuesList
- * @param i
+ * The function reads a command line and parse it to a command, a set/s to work on and values to add to the values list.
+ * @param line is the input.
+ * @param valuesList will holds the values that were accepted in the input.
+ * @param i is
  */
-void readLine(char* line, char* valuesList, int i);
+void readLine(char* line, char* valuesList);
 
 #endif //MAABADA_MMN22_MYSET_H

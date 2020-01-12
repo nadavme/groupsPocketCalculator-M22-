@@ -7,7 +7,7 @@
 
 
 /*!
- *
+ * See in header file.
  */
 void setsInitiator()
 {
@@ -21,7 +21,7 @@ void setsInitiator()
 
 
 /*!
- *
+ * * See in header file.
  * @param set
  */
 void initiate(char *set) {
@@ -33,9 +33,16 @@ void initiate(char *set) {
 }
 
 
-
-void readLine(char* line, char* valuesList, int i) {
-    printf("problems here")
+/*!
+ *  * See in header file.
+ * @param line
+ * @param valuesList
+ * @param i
+ */
+void readLine(char* line, char* valuesList)
+{
+    int i = 0;
+    printf("problems here");
     if (line[strlen(line) - 1] == '\n' || line[strlen(line) - 1] == ' ') line[strlen(line) - 1] = COMMA;
 
     char *token = strtok(line, (const char *) COMMA);
@@ -60,13 +67,15 @@ int main(int numArgs, char* argv[]) {
     char line[80];
     printf("Hello,please enter a command and sets:\n");
 
-    while(fgets(line, 81, stdin))
+    while((int) fgets(line, 81, stdin) != EOF )
     {
         puts(line);
 
+        fgets(line, 81, stdin);
+
         if(line[strlen(line)-1] == '\n' || line[strlen(line)-1] == ' ') line[strlen(line)-1] = ',';
 
-        readLine( line, valuesList, i);
+        readLine( line, valuesList);
 
         if (strcmp(argv[0], "read_set") == 0) read_set(argv[1], valuesList);
 

@@ -54,7 +54,12 @@ while(valuesList[i] != -1)
     }
 }
 
-
+/*!
+ * See in header file.
+ * @param a
+ * @param b
+ * @param c
+ */
 void union_set(set a, set b, set c)
 {
     int i;
@@ -64,6 +69,11 @@ void union_set(set a, set b, set c)
     }
 }
 
+/*!
+ * See in header file. * @param a
+ * @param b
+ * @param c
+ */
 void intersect_set(set a, set b, set c)
 {
     int i;
@@ -73,6 +83,11 @@ void intersect_set(set a, set b, set c)
     }
 }
 
+/*!
+ * See in header file. * @param a
+ * @param b
+ * @param c
+ */
 void sub_set(set a, set b, set c)
 {
     int i;
@@ -82,6 +97,12 @@ void sub_set(set a, set b, set c)
     }
 }
 
+
+/*!
+ * See in header file. * @param a
+ * @param b
+ * @param c
+ */
 void symdiff_set(set a, set b, set c)
 {
     int i;
@@ -91,6 +112,9 @@ void symdiff_set(set a, set b, set c)
     }
 }
 
+
+/*!
+ * See in header file. */
 void stop()
 {
     exit(11);
