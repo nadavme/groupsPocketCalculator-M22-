@@ -37,6 +37,6 @@ void commasReplacer(char* line);
  * @param valuesList will holds the values that were accepted in the input.
  * @param i is
  */
-void readLine(char* line, char* valuesList);
+void readLine(char* line, char *valuesList);
 
 #endif //MAABADA_MMN22_MYSET_H

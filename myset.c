@@ -41,7 +41,7 @@ void initiate(char *set) {
  * @param valuesList
  * @param i
  */
-void readLine(char* line, char* valuesList)
+void readLine(char* line, char *valuesList)
 {
     int i = 0;
     commasReplacer(line);
@@ -49,8 +49,9 @@ void readLine(char* line, char* valuesList)
     token = strtok(line, " ");
     while (token != NULL)
     {
-        strcpy(token, &valuesList[i]);
-        token = strtok(NULL, ", ");
+//        valuesList[i] = *token;
+        strcpy(valuesList[i], token);
+        token = strtok(NULL, " ");
         i++;
     }
 }
@@ -81,7 +82,7 @@ int main(int numArgs, char* argv[])
         printf("Hello,please enter a command and sets:\n");
 
         /*Expecting an input that end with a 'stop' command.*/
-        if (!fgets(line, 80, stdin))
+        if (!gets(line))
         {
             print_set("ERROR: EOF was reached but 'stop' command weren't given");
             exit(0);
