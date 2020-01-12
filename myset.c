@@ -35,16 +35,15 @@ void initiate(char *set) {
 
 
 void readLine(char* line, char* valuesList, int i) {
-    scanf("%s", line);
-
+    printf("problems here")
     if (line[strlen(line) - 1] == '\n' || line[strlen(line) - 1] == ' ') line[strlen(line) - 1] = COMMA;
 
-    char *token = strtok(line, COMMA);
+    char *token = strtok(line, (const char *) COMMA);
 
     while (token != NULL)
     {
-        valuesList[i] = token;
-        token = strtok(NULL, COMMA);
+        strcpy(token, &valuesList[i]);
+        token = strtok(NULL, (const char *) COMMA);
     }
 }
 
@@ -57,33 +56,41 @@ void readLine(char* line, char* valuesList, int i) {
 int main(int numArgs, char* argv[]) {
     setsInitiator();
     int i = 2;
-    char* valuesList[128];
-    char* line[80];
-    printf("Hello,please enter an order and sets\n");
+    char valuesList[128];
+    char line[80];
+    printf("Hello,please enter a command and sets:\n");
 
-    scanf("%s", line);
+    while(fgets(line, 81, stdin))
+    {
+        puts(line);
 
-    if(line[strlen(line)-1] == '\n' || line[strlen(line)-1] == ' ') line[strlen(line)-1] = ',';
-    
-    readLine( line, valuesList, i);
+        if(line[strlen(line)-1] == '\n' || line[strlen(line)-1] == ' ') line[strlen(line)-1] = ',';
 
-    if (argv[0] == 'read_set') read_set(argv[1], valuesList);
+        readLine( line, valuesList, i);
 
-    if(argv[0] == 'print_set') print_set(argv[1]);
+        if (strcmp(argv[0], "read_set") == 0) read_set(argv[1], valuesList);
 
-    if (numArgs != 3) printf("Error: 3 sets were expected. Enter your new order or stop.");
+        if(strcmp(argv[0], "print_set")==0) print_set(argv[1]);
 
-    else
+        if (strcmp(argv[0], "stop")==0) stop();
+
+        if (numArgs != 3) printf("Error: 3 sets were expected. Enter your new order or stop.");
+
+        else
         {
 
-        if (argv[0] == 'union_set') union_set(argv[1], argv[2], argv[3]);
+            if (strcmp(argv[0], "union_set")==0) union_set(argv[1], argv[2], argv[3]);
 
-        if (argv[0] == 'intersect_set') intersect_set(argv[1], argv[2], argv[3]);
+            if (strcmp(argv[0], "intersect_set")==0) intersect_set(argv[1], argv[2], argv[3]);
 
-        if (argv[0] == 'sub_set') sub_set(argv[1], argv[2], argv[3]);
+            if (strcmp(argv[0], "sub_set")==0) sub_set(argv[1], argv[2], argv[3]);
 
-        if (argv[0] == 'symdiff_set') symdiff_set(argv[1], argv[2], argv[3]);
-
+            if (strcmp(argv[0], "symdiff_set")==0) symdiff_set(argv[1], argv[2], argv[3]);
         }
+
+    }
+    printf("This is the end of the file ot input. The program will now shut down.");
+    stop();
+
     return 0;
 }

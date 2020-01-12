@@ -4,8 +4,12 @@
 
 #ifndef MAABADA_MMN22_SET_H
 
-#include "stdbool.h"
 #define MAABADA_MMN22_SET_H
+
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 typedef char set[16];
 
@@ -21,14 +25,14 @@ typedef char set[16];
  * @param bit
  * @return
  */
-bool bitNumberIsOn(char cell, int bit);
+bool bitIsOn(char cell, int bit);
 
 
 /*!
  *
  * @param a
  */
-void print_set(set a);
+void print_set(const set a);
 
 /*!
  *
