@@ -6,19 +6,18 @@
 
 set SETA, SETB, SETC, SETD, SETE, SETF;
 
-
+enum setStrings {"SETA", "SETB", "SETC", "SETD", "SETE", "SETF"};
 
 /*!
  * See in header file.
  */
-void setsInitiator()
-{
-    initiate(SETA);
-    initiate(SETB);
-    initiate(SETC);
-    initiate(SETD);
-    initiate(SETE);
-    initiate(SETF);
+
+void setsInitiator(set *sets) {
+    int i;
+    for (i= 1; i < 7; i++)
+    {
+        initiate(sets[i]);
+    }
 }
 
 
@@ -57,6 +56,8 @@ void readLine(char* line, char* valuesList)
 }
 
 
+
+
 void commasReplacer(char* line)
 {
     int i= 0;
@@ -74,52 +75,64 @@ void commasReplacer(char* line)
  */
 int main(int numArgs, char* argv[])
 {
-    char valuesList[129][10];
+//    char valuesList[129][10];
     char line[80];
-    setsInitiator();
-    int i = 2;
+//    char command[10], firstSet[10], secondSet[10], thirdSet[10];
+    set* sets = {SETA, SETB, SETC, SETD, SETE, SETF};
+    char commandAndSets[4][10];
+    char *token;
+    setsInitiator(sets);
+    int i = 0;
     do {
         printf("Hello,please enter a command and sets:\n");
 
         /*Expecting an input that end with a 'stop' command.*/
         if (!gets(line))
         {
-            print_set("ERROR: EOF was reached but 'stop' command weren't given");
+            printf("ERROR: EOF was reached but 'stop' command weren't given");
             exit(0);
         }/*Get rid of the '/n' at the end of the input.*/
-        if(line[strlen(line)-1] == '\n') line[strlen(line)] = '\0';
         printf("%s\n", line);
-        printf("shit3");
-        readLine(line, *valuesList);
-        printf("shit4");
-        printf("%s", valuesList[0]);
+        if(line[strlen(line)-1] == '\n') line[strlen(line)] = '\0';
+        commasReplacer(line);
+        token = strtok(line, " ");
+        while(token != NULL)
+        {
+            strcpy(commandAndSets[i], token);
+            if (strcmp(commandAndSets[i], "read_set") == 0) read_set(sets[i], );
+            i++;
+            token = strtok(NULL, " ");
+        }
+//        for (i = 0; i < 5; i++)
+//        {
+//            printf("%s, ", commandAndSets[i]);
+//        }
+//        readLine(line, *valuesList);
+//        printf("%s", valuesList[0]);
         if (strcmp(line, "\0") != 0)
 //            runCommand((char) &line);
         {
-            printf("shit5");
+//            readLine(line, *valuesList);
 
-            readLine(line, *valuesList);
+            if (strcmp(commandAndSets[0], "read_set") == 0) read_set(argv[1]);
 
-            if (strcmp(argv[0], "read_set") == 0) read_set(argv[1], valuesList);
+            if(strcmp(commandAndSets[0], "print_set")==0) print_set(argv[1]);
 
-            if(strcmp(argv[0], "print_set")==0) print_set(argv[1]);
-
-            if (strcmp(argv[0], "stop")==0) stop();
+            if (strcmp(commandAndSets[0], "stop")==0) stop();
 
             if (numArgs != 3) printf("\nError: 3 sets were expected. Enter your new order or stop.\n");
 
             else
             {
 
-                if (strcmp(argv[0], "union_set")==0) union_set(argv[1], argv[2], argv[3]);
+                if (strcmp(commandAndSets[0], "union_set")==0) union_set(argv[1], argv[2], argv[3]);
 
-                if (strcmp(argv[0], "intersect_set")==0) intersect_set(argv[1], argv[2], argv[3]);
+                if (strcmp(commandAndSets[0], "intersect_set")==0) intersect_set(argv[1], argv[2], argv[3]);
 
-                if (strcmp(argv[0], "sub_set")==0) sub_set(argv[1], argv[2], argv[3]);
+                if (strcmp(commandAndSets[0], "sub_set")==0) sub_set(argv[1], argv[2], argv[3]);
 
-                if (strcmp(argv[0], "symdiff_set")==0) symdiff_set(argv[1], argv[2], argv[3]);
+                if (strcmp(commandAndSets[0], "symdiff_set")==0) symdiff_set(argv[1], argv[2], argv[3]);
             }
-
         }
     }
     while (strcmp(line, "stop") != 0);/*Accept new commands and execute as long as 'stop' wasn't entered.*/

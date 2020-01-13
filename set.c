@@ -5,28 +5,23 @@
 #include "set.h"
 
 
-void print_set(const set set)
+void print_set(set set)
 {
-    int i = 0, j = 0, counter = 0;
-    if(set[0] == -1) printf("The set is empty");
-    else
+    int i,j,cnt = 0;
+    for(i = 0; i<16;i++)
     {
-        while(i < 16)
+        for(j=0;j<8;j++)
         {
-            while (j < 8)
+            if (cnt == 16)/*going down a line after 16 elements in a set*/
+                {
+                printf("\n");
+                cnt = 0;
+                }
+            if(bitIsOn(set[i],j))
             {
-                if (counter > 15)
-                {
-                    printf("\n");
-                    counter = 0;
-                }
-                if (&bitIsOn)
-                {
-                    printf("%d, ", (8*i)+j-1);
-                    counter++;
-                }
-                j++;
-            }i++;
+                printf("%d, ",8*i+j-1);
+                cnt++;
+            }
         }
     }
 }
@@ -37,22 +32,35 @@ bool bitIsOn(char cell, int bit)
     return (cell & (1<<bit)) != 0;
 }
 
-void read_set(set set,char valuesList[])
-{
-int i = 0,bit;
-long byte = 0;
-unsigned char a = 1;
 
-while(valuesList[i] != -1)
-{
-    strtoul(&valuesList[i], byte,10);
-    byte = (byte+1)/8;
-    strtoul(&valuesList[i],bit,10);
-    bit = (bit+1)%8;
-    set[byte] = set[byte]|(a<<bit-1);
-    i++;
-    }
+
+void get_num(char *set, int num) {
+    int bit, byte;
+
+    byte = (num+1)/8;
+    bit = (num+1)%8;
+    set[byte] = set[byte]|(1 << bit);
+
 }
+//void read_set(set set,char line[])
+//{
+//int bit, counter = 0;
+//commasReplacer(line);
+//char *token;
+//token = strtok(line, " ");
+//long byte = 0;
+//unsigned char a = 1;
+//
+//while((int) token != -1)
+//{
+//    strtoul(token, (char **) byte, 10);
+//    byte = (byte+1)/8;
+//    strtoul(token, (char **) bit, 10);
+//    bit = (bit+1)%8;
+//    set[byte] = set[byte]|(a<<(bit-1));
+//    token = strtok(NULL, " ");
+//    }
+//}
 
 /*!
  * See in header file.

@@ -5,13 +5,12 @@
 #ifndef MAABADA_MMN22_MYSET_H
 #define MAABADA_MMN22_MYSET_H
 
-#define COMMA ','
+
 
 #include <string.h>
 #include <stdio.h>
 #include "stdlib.h"
-
-
+#include "set.h"
 
 /*!
  * The function initiates the sets of size 16 to holds 0 in all cells(and therefor 000000000 bits of all byte
@@ -20,14 +19,17 @@
 void initiate(set set);
 
 
-/*!
- * The function takes all the six sets and initiates them together.
- */
-void setsInitiator();
 
 /*!
- *
- * @param line
+ *  * The function takes all the six sets and initiates them together.
+ * @param sets is an array of sets.
+ */
+
+void setsInitiator(set sets[]);
+
+/*!
+ * the function takes all commas and replace them bu space.
+ * @param line is the input command line.
  */
 void commasReplacer(char* line);
 
