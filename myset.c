@@ -63,7 +63,7 @@ void commasReplacer(char* line)
     int i= 0;
     while(line[i] != '\0')
     {
-        if(strcmp(&line[i], ",") == 0)
+        if (line[i] == ',')
         {
             strcpy(&line[i], " ");
         }
