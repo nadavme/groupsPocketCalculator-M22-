@@ -65,7 +65,7 @@ void commasReplacer(char* line)
     {
         if (line[i] == ',')
         {
-            line[i] = 0;
+            line[i] = ' ';
         }
         i++;
     }
