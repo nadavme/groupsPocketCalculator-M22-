@@ -34,11 +34,11 @@ bool bitIsOn(char cell, int bit)
 
 
 
-void get_num(set set, int num) {
+void get_num(set setx, int num) {
     int bit, byte;
     byte = (num+1)/8;
     bit = (num+1)%8;
-    set[byte] = set[byte]|(1 << bit);
+    setx[byte] = setx[byte]|(1 << bit);
 }
 //void read_set(set set,char line[])
 //{

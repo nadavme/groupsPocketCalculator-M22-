@@ -65,7 +65,7 @@ void commasReplacer(char* line)
     {
         if (line[i] == ',')
         {
-            strcpy(&line[i], " ");
+            line[i] = 0;
         }
         i++;
     }
@@ -102,10 +102,18 @@ int main(int numArgs, char* argv[])
         if(line[strlen(line)-1] == '\n') line[strlen(line)] = '\0';
         commasReplacer(line);
         token = strtok(line, " ");
-        while((token != NULL) && ((int)token != -1))
+        while(token != NULL)
         {
             strcpy(commandAndSets[i], token);
-            if ((strcmp(commandAndSets[0], "read_set") == 0) && (counter > 1)) get_num(sets[(char)commandAndSets[1]],(int) token);
+            if ((strcmp(commandAndSets[0], "read_set") == 0) && (counter > 0))
+            {
+                while(token != NULL)
+                {
+                    token = strtok(NULL, " ");
+                    get_num(sets[(char)commandAndSets[1]],(int) token);
+                }
+
+            }
             i++;
             counter++;
             token = strtok(NULL, " ");
