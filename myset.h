@@ -10,7 +10,15 @@
 #include <string.h>
 #include <stdio.h>
 #include "stdlib.h"
-#include "set.h"
+//#include "set.h"
+
+#define SETA 1
+#define SETB 2
+#define SETC 3
+#define SETD 4
+#define SETE 5
+#define SETF 6
+
 
 /*!
  * The function initiates the sets of size 16 to holds 0 in all cells(and therefor 000000000 bits of all byte

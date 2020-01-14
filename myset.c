@@ -4,9 +4,9 @@
 #include "set.h"
 #include "myset.h"
 
-set SETA, SETB, SETC, SETD, SETE, SETF;
+set setA, setB, setC, setD, setE, setF;
 
-enum setStrings {"SETA", "SETB", "SETC", "SETD", "SETE", "SETF"};
+
 
 /*!
  * See in header file.
@@ -61,9 +61,13 @@ void readLine(char* line, char* valuesList)
 void commasReplacer(char* line)
 {
     int i= 0;
-    for (i = 0; i < strlen(line)-1; i++)
+    while(line[i] != '\0')
     {
-        if(strcmp(&line[i], ",")== 0) strcpy(&line[i], " ");
+        if(strcmp(&line[i], ",") == 0)
+        {
+            strcpy(&line[i], " ");
+        }
+        i++;
     }
 }
 
@@ -75,10 +79,12 @@ void commasReplacer(char* line)
  */
 int main(int numArgs, char* argv[])
 {
+
 //    char valuesList[129][10];
+    int counter = 0;
     char line[80];
 //    char command[10], firstSet[10], secondSet[10], thirdSet[10];
-    set* sets = {SETA, SETB, SETC, SETD, SETE, SETF};
+    set* sets = {(set *) setA, setB, setC, setD, setE, setF};
     char commandAndSets[4][10];
     char *token;
     setsInitiator(sets);
@@ -96,13 +102,15 @@ int main(int numArgs, char* argv[])
         if(line[strlen(line)-1] == '\n') line[strlen(line)] = '\0';
         commasReplacer(line);
         token = strtok(line, " ");
-        while(token != NULL)
+        while((token != NULL) && ((int)token != -1))
         {
             strcpy(commandAndSets[i], token);
-            if (strcmp(commandAndSets[i], "read_set") == 0) read_set(sets[i], );
+            if ((strcmp(commandAndSets[0], "read_set") == 0) && (counter > 1)) get_num(sets[(char)commandAndSets[1]],(int) token);
             i++;
+            counter++;
             token = strtok(NULL, " ");
         }
+        get_num(sets[(int)commandAndSets[1]], -1);
 //        for (i = 0; i < 5; i++)
 //        {
 //            printf("%s, ", commandAndSets[i]);
@@ -114,7 +122,7 @@ int main(int numArgs, char* argv[])
         {
 //            readLine(line, *valuesList);
 
-            if (strcmp(commandAndSets[0], "read_set") == 0) read_set(argv[1]);
+//            if (strcmp(commandAndSets[0], "read_set") == 0) read_set(argv[1]);
 
             if(strcmp(commandAndSets[0], "print_set")==0) print_set(argv[1]);
 
