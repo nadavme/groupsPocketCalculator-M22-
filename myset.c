@@ -12,7 +12,7 @@ set setA, setB, setC, setD, setE, setF;
  * See in header file.
  */
 
-void setsInitiator(set *sets) {
+void setsInitiator(set* sets) {
     int i;
     for (i= 1; i < 7; i++)
     {
@@ -63,9 +63,9 @@ void commasReplacer(char* line)
     int i= 0;
     while(line[i] != '\0')
     {
-        if(strcmp(&line[i], ",") == 0)
+        if (line[i] == ',')
         {
-            strcpy(&line[i], " ");
+            line[i] = ' ';
         }
         i++;
     }
@@ -84,7 +84,7 @@ int main(int numArgs, char* argv[])
     int counter = 0;
     char line[80];
 //    char command[10], firstSet[10], secondSet[10], thirdSet[10];
-    set* sets = {(set *) setA, setB, setC, setD, setE, setF};
+    set* sets = {setA, setB, setC, setD, setE, setF};
     char commandAndSets[4][10];
     char *token;
     setsInitiator(sets);
@@ -102,10 +102,21 @@ int main(int numArgs, char* argv[])
         if(line[strlen(line)-1] == '\n') line[strlen(line)] = '\0';
         commasReplacer(line);
         token = strtok(line, " ");
-        while((token != NULL) && ((int)token != -1))
+        while(token != NULL)
         {
             strcpy(commandAndSets[i], token);
-            if ((strcmp(commandAndSets[0], "read_set") == 0) && (counter > 1)) get_num(sets[(char)commandAndSets[1]],(int) token);
+            if ((strcmp(commandAndSets[0], "read_set") == 0) && (counter > 0))
+            {
+                while(token != NULL)
+                {
+                    token = strtok(NULL, " ");
+                    printf("\n%s\n", sets[(char)commandAndSets[1]]);
+                    print_set(sets[(char)commandAndSets[1]]);
+                    get_num(sets[SETA], token);
+                    get_num(sets[(char)commandAndSets[1]],token);
+                }
+
+            }
             i++;
             counter++;
             token = strtok(NULL, " ");

@@ -1,6 +1,8 @@
 //
 // Created by nadav.meidan on 06/01/2020.
 //
+// Created by nadav.meidan on 06/01/2020.
+//
 
 #ifndef MAABADA_MMN22_MYSET_H
 #define MAABADA_MMN22_MYSET_H
@@ -12,12 +14,7 @@
 #include "stdlib.h"
 //#include "set.h"
 
-#define SETA 1
-#define SETB 2
-#define SETC 3
-#define SETD 4
-#define SETE 5
-#define SETF 6
+enum StringsOfSets {SETA, SETB, SETC, SETD, SETE, SETF};
 
 
 /*!
