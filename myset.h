@@ -29,7 +29,7 @@ void commasReplacer(char* line);
  * @param line
  * @return
  */
-char* parseInputLine(char line[]);
+char** parseInputLine(char line[]);
 
 
 /*!

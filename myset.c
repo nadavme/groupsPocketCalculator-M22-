@@ -57,7 +57,7 @@ void commasReplacer(char* line)
 }
 
 
-char* parseInputLine(char line[]);
+char** parseInputLine(char line[]);
 {
     char parsedLineLocal[40];
     int i =0;
@@ -68,7 +68,7 @@ char* parseInputLine(char line[]);
         strcpy(parsedLineLocal[i], token);
         token strtok(NULL, " \t");
     }
-    return parsedLineLocal;
+    return &parsedLineLocal;
 }
 
 void  matchCommand(char* command)
