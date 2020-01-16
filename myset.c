@@ -103,7 +103,7 @@ int main(int numArgs, char* argv[])
         commasReplacer(line);
         token = strtok(line, " ");
         while(token != NULL)
-        {//ffgdfgdfg
+        {
             strcpy(commandAndSets[i], token);
             if ((strcmp(commandAndSets[0], "read_set") == 0) && (counter > 0))
             {
