@@ -13,10 +13,10 @@ void print_set(set set)
         for(j=0;j<8;j++)
         {
             if (cnt == 16)/*going down a line after 16 elements in a set*/
-                {
+            {
                 printf("\n");
                 cnt = 0;
-                }
+            }
             if(bitIsOn(set[i],j))
             {
                 printf("%d, ",8*i+j-1);

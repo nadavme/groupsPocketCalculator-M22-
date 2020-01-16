@@ -12,7 +12,7 @@ set setA, setB, setC, setD, setE, setF;
  * See in header file.
  */
 
-void setsInitiator(set *sets) {
+void setsInitiator(set* sets) {
     int i;
     for (i= 1; i < 7; i++)
     {
@@ -84,7 +84,7 @@ int main(int numArgs, char* argv[])
     int counter = 0;
     char line[80];
 //    char command[10], firstSet[10], secondSet[10], thirdSet[10];
-    set* sets = {(set *) setA, setB, setC, setD, setE, setF};
+    set* sets = {setA, setB, setC, setD, setE, setF};
     char commandAndSets[4][10];
     char *token;
     setsInitiator(sets);
@@ -110,7 +110,10 @@ int main(int numArgs, char* argv[])
                 while(token != NULL)
                 {
                     token = strtok(NULL, " ");
-                    get_num(sets[(char)commandAndSets[1]],(int) token);
+                    printf("\n%s\n", sets[(char)commandAndSets[1]]);
+                    print_set(sets[(char)commandAndSets[1]]);
+                    get_num(sets[SETA], token);
+                    get_num(sets[(char)commandAndSets[1]],token);
                 }
 
             }
