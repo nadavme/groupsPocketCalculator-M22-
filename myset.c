@@ -11,19 +11,16 @@ set SETA, SETB, SETC, SETD, SETE, SETF;
 void excuteCommand()
 {
     char line[120];
-    void* command;
     printf("Hello,please enter a command and sets:\n");
-//    bool isThereInput = inputChecker(line);
-    while (fgets(line, 120, stdin) != NULL)
+    while (fgets(line, 120, stdin) != NULL)/*Keep going until EOF.*/
     {
-        char parsedLine[40][10];
-        printf("%s\n", line);
-        commasReplacer(line);
-        strcpy(parsedLine, parseInputLine(line));
-        char *p = parsedLine;
-        matchCommand((char *) parseCommand(p));
-        matchSet((char *) parseSet4ReadOrPrint(p));
-        matchSet((char *) parseSets4OtherFunctions())
+//        char parsedLine[40][10];
+        printf("%s\n", line);/*Printing the input line as is*/
+        commasReplacer(line);/*Reaplace the cammas by spaces*/
+        char* pL =parseInputLine(line);/*parse the input line to tokens separated by spaces.*/
+        matchCommand(parseCommand(pL));/*Extract the command from input.*/
+        matchSet(parseSet4ReadOrPrint(pL));/*Match a single set from the input to read_set ot print_set.*/
+        matchSet((char *) parseSets4OtherFunctions())/*Match 3 sets for other commands.*/
 
     }
     printf("ERROR: EOF was reached but 'stop' command weren't given");
@@ -60,16 +57,18 @@ void commasReplacer(char* line)
 }
 
 
-char parseInputLine(char line[]);
+char* parseInputLine(char line[]);
 {
+    char parsedLineLocal[40];
     int i =0;
     char *token;
     token = strtok(line, " \t");
     while(token != NULL)
     {
-        strcpy(parsedLine[i], token);
+        strcpy(parsedLineLocal[i], token);
         token strtok(NULL, " \t");
     }
+    return parsedLineLocal;
 }
 
 void  matchCommand(char* command)
@@ -120,15 +119,15 @@ set* matchSets(char parsedLine)
     return sets;
 }
 
-char parseCommand(char* parsedLine)
+char* parseCommand(char* parsedLine)
 {
-    return parsedLine[0];
+    return &parsedLine[0];
 }
 
 
-char parseSet4ReadOrPrint(char* parsedLine)
+char* parseSet4ReadOrPrint(char* parsedLine)
 {
-    return parsedLine[1];
+    return &parsedLine[1];
 }
 
 set* parseSets4OtherFunctions(char *parsedLine)

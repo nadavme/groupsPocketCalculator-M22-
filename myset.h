@@ -29,7 +29,7 @@ void commasReplacer(char* line);
  * @param line
  * @return
  */
-char parseInputLine(char line[]);
+char* parseInputLine(char line[]);
 
 
 /*!
@@ -43,7 +43,7 @@ void excuteCommand();
  * @param parsedLine
  * @return
  */
-char parseCommand(char* parsedLine);
+char* parseCommand(char* parsedLine);
 
 
 /*!
@@ -66,7 +66,7 @@ set*  matchSet(char* setName);
  * @param parsedLine
  * @return
  */
-char parseSet4ReadOrPrint(char* parsedLine);
+char* parseSet4ReadOrPrint(char* parsedLine);
 
 
 /*!
