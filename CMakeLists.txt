@@ -5,10 +5,10 @@ set(CMAKE_C_STANDARD 90)
 
 set(PROJECT_HEADERS
         set.h
-        myset.h)
+        oldMain.h)
 
 set(PROJECT_SOURCES
         set.c
-        myset.c)
+        oldMain.c)
 
 add_executable(Maabada-Mmn22 ${PROJECT_SOURCES} ${PROJECT_HEADERS})

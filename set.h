@@ -18,6 +18,8 @@
 typedef char set[16];
 
 
+
+
 /*!
  * This function checks if the the bit is on.
  * @param cell in the 16 cells array represent the byte.
