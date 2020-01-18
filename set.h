@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "validations.h"
 
 
 /*!
@@ -39,15 +40,15 @@ void get_num(set set,int num);
  * The function goes over the set, bit by bit, checks is its on- and if it is, prints it.
  * @param set is the set we print.
  */
-void print_set(set set);
+void print_set(set set, char* parsedLine);
 
 
 /*!
- * The function reads a bunch of numbers and reads it to the requested array.
- * @param set is the set to read to.
- * @param valuesList is the array of values to read.
+ *
+ * @param set
+ * @param parsedLine
  */
-void read_set(set set, char valuesList[]);
+void read_set(set set, char* parsedLine)
 
 
 /*!

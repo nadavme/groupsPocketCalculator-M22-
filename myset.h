@@ -21,7 +21,15 @@
  * the function takes all commas and replace them bu space.
  * @param line is the input command line.
  */
-void commasReplacer(char* line);
+const char * commasReplacer(char* line);
+
+
+/*!
+ *
+ * @param line
+ * @return
+ */
+bool doubleCommasChecker(char* line);
 
 
 /*!
@@ -50,7 +58,7 @@ char* parseCommand(char* parsedLine);
  *
  * @param command
  */
-void  matchCommand(char* command);
+void  matchCommand(char* command, char* parsedLine);
 
 
 /*!

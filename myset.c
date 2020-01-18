@@ -5,28 +5,32 @@
 #include "myset.h"
 #include "set.h"
 
+
 set SETA, SETB, SETC, SETD, SETE, SETF;
+
+
 
 
 void excuteCommand()
 {
     char line[120];
+    char lineWithNoCommas[120];
     printf("Hello,please enter a command and sets:\n");
     while (fgets(line, 120, stdin) != NULL)/*Keep going until EOF.*/
     {
-//        char parsedLine[40][10];
+        ARGS_NUM = 0;
         printf("%s\n", line);/*Printing the input line as is*/
-        commasReplacer(line);/*Reaplace the cammas by spaces*/
-        char* pL =parseInputLine(line);/*parse the input line to tokens separated by spaces.*/
-        matchCommand(parseCommand(pL));/*Extract the command from input.*/
+        strcpy(lineWithNoCommas, commasReplacer(line));/*Reaplace the cammas by spaces*/
+        char* pL =parseInputLine(lineWithNoCommas);/*parse the input line to tokens separated by spaces.*/
+        matchCommand(parseCommand(pL), pL);/*Extract the command from input.*/
         matchSet(parseSet4ReadOrPrint(pL));/*Match a single set from the input to read_set ot print_set.*/
-        matchSet((char *) parseSets4OtherFunctions())/*Match 3 sets for other commands.*/
-
+        if (doubleCommasChecker(line))
+        {
+            matchSet((char *) parseSets4OtherFunctions(pL));/*Match 3 sets for other commands.*/
+        }
     }
     printf("ERROR: EOF was reached but 'stop' command weren't given");
     exit(0);
-    parseSet4ReadOrPrint();
-    parseSets();
 }
 
 
@@ -43,7 +47,7 @@ void excuteCommand()
  *
  * @param line
  */
-void commasReplacer(char* line)
+const char * commasReplacer(char* line)
 {
     int i= 0;
     while(line[i] != '\0')
@@ -55,9 +59,31 @@ void commasReplacer(char* line)
         i++;
     }
 }
+bool doubleCommasChecker(char* line)
+{
+    char *token;
+    token = strtok(line, " \t");
+    int i = strlen(token) -1;
+    int j;
+    int counter=0 , first = 0, commasCounter =0;
+    for (j = i; j < strlen(line) -1; j++)
+    {
+        if(line[j] == 'S') counter++;
+        if ((line[i] == 's')&& (counter = 1)) first = i;
+        if((line[j] == 'S')&& (counter>2)) break;
+    }
+    i= first;
+    while(i < j)
+    {
+        if (line[i] ==',') commasCounter++;
+        i++;
+    }
+    if (commasCounter > 2) return true;
+    return false;
+}
 
 
-char** parseInputLine(char line[]);
+char** parseInputLine(char line[])
 {
     char parsedLineLocal[40];
     int i =0;
@@ -65,31 +91,57 @@ char** parseInputLine(char line[]);
     token = strtok(line, " \t");
     while(token != NULL)
     {
-        strcpy(parsedLineLocal[i], token);
-        token strtok(NULL, " \t");
+        strcpy(&parsedLineLocal[i], token);
+        ARGS_NUM ++;
+        token = strtok(NULL, " \t");
     }
-    return &parsedLineLocal;
+    return parsedLineLocal;
 }
 
-void  matchCommand(char* command)
+void  matchCommand(char* command, char* parsedLine)
 {
-    if(strcmp(command, "read_set")==0) read_set());
+    if(strcmp(command, "read_set")==0)
+    {
+        set* set = matchSet(parseSet4ReadOrPrint(parsedLine));
+        if (readIsValid(parsedLine))
+        {
+            read_set(set, parsedLine);
+        }
+    }
 
-    else if(strcmp(command, "print_set")==0) print_set());
+    else if(strcmp(command, "print_set")==0)
+    {
+        set* set = matchSet(parseSet4ReadOrPrint(parsedLine));
+        print_set(set, parsedLine);
+    }
+    set* sets = parseSets4OtherFunctions(parsedLine);
 
-    else if(strcmp(command, "union_set")==0) union_set());
+    if(strcmp(command, "union_set")==0)
+    {
+        if (isValid(sets)) union_set(sets[0], sets[1], sets[2]);
+    }
 
-    else if(strcmp(command, "intersect_set")==0) intersect_set());
+    else if(strcmp(command, "intersect_set")==0)
+    {
+        if (isValid(sets)) intersect_set(sets[0], sets[1], sets[2]);
+    }
 
-    else if(strcmp(command, "sub_set")==0) sub_set());
+    else if(strcmp(command, "sub_set")==0)
+    {
+        if (isValid(sets)) sub_set(sets[0], sets[1], sets[2]);
+    }
 
-    else if(strcmp(command, "symdiff_set")==0) symdiff_set());
+    else if(strcmp(command, "symdiff_set")==0)
+    {
+        if (isValid(sets)) symdiff_set(sets[0], sets[1], sets[2]);
+    }
 
     else if(strcmp(command, "stop")==0)
     {
             printf("This is the end of the file ot input. The program will now shut down.");
             stop();
     }
+    else printf("Undefined command name");
 
 }
 
@@ -109,15 +161,19 @@ set*  matchSet(char* setName)
 
     else if(strcmp(setName, "SETF")==0) return &SETF;
 
-    else return NULL;
+    else
+        {
+        printf("Undefined set member");
+        return NULL;
+        }
 }
 
 
-set* matchSets(char parsedLine)
-{
-    set* sets = parseSets4OtherFunctions(parsedLine);
-    return sets;
-}
+//set* matchSets(char* parsedLine)
+//{
+//    set* sets = parseSets4OtherFunctions(parsedLine);
+//    return sets;
+//}
 
 char* parseCommand(char* parsedLine)
 {
@@ -133,12 +189,13 @@ char* parseSet4ReadOrPrint(char* parsedLine)
 set* parseSets4OtherFunctions(char *parsedLine)
 {
     int i = 1;
-    set sets[3];
+    set* sets[3];
     while((parsedLine[i] != NULL) && (i<5))
     {
-        strcpy(sets[i-1], matchSet(parsedLine[i]));
+        strcpy((char *) sets[i - 1], (const char *) matchSet((char *) parsedLine[i]));
         i++;
     }
+    return *sets;
 }
 
 

@@ -58,7 +58,7 @@ void readLine(char* line, char* valuesList)
 
 
 
-void commasReplacer(char* line)
+const char * commasReplacer(char* line)
 {
     int i= 0;
     while(line[i] != '\0')

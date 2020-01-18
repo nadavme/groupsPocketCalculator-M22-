@@ -36,7 +36,7 @@ void setsInitiator(set sets[]);
  * the function takes all commas and replace them bu space.
  * @param line is the input command line.
  */
-void commasReplacer(char* line);
+const char * commasReplacer(char* line);
 
 
 /*!

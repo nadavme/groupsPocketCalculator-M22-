@@ -3,28 +3,33 @@
 //
 
 #include "set.h"
+#include "validations.h"
 
 
-void print_set(set set)
+void print_set(set set, char* parseLine)
 {
-    int i,j,cnt = 0;
-    for(i = 0; i<16;i++)
+    if (printIsValid(set, parseLine))
     {
-        for(j=0;j<8;j++)
+        int i,j,cnt = 0;
+        for(i = 0; i<16;i++)
         {
-            if (cnt == 16)/*going down a line after 16 elements in a set*/
+            for(j=0;j<8;j++)
             {
-                printf("\n");
-                cnt = 0;
-            }
-            if(bitIsOn(set[i],j))
-            {
-                printf("%d, ",8*i+j-1);
-                cnt++;
+                if (cnt == 16)/*going down a line after 16 elements in a set*/
+                {
+                    printf("\n");
+                    cnt = 0;
+                }
+                if(bitIsOn(set[i],j))
+                {
+                    printf("%d, ",8*i+j-1);
+                    cnt++;
+                }
             }
         }
     }
 }
+
 
 
 bool bitIsOn(char cell, int bit)
@@ -32,6 +37,15 @@ bool bitIsOn(char cell, int bit)
     return (cell & (1<<bit)) != 0;
 }
 
+
+void read_set(set set, char* parsedLine)
+{
+    int i = 2;
+    while ((i < ARGS_NUM-2)&& (parsedLine[i] != -1))
+    {
+        get_num(set, (int) parsedLine[i]);
+    }
+}
 
 
 void get_num(set setx, int num) {
