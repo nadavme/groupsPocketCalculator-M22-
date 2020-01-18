@@ -14,7 +14,6 @@
 #include "set.h"
 
 /*This is a global variable that helps the program know how many input number are"*/
-int ARGS_NUM = 0;
 
 
 /*!
@@ -44,7 +43,7 @@ bool isValid(set* sets[]);//this check is for all other functions/
  * @param parsedLine
  * @return
  */
-bool readIsValid(char parsedLine[]);//this check is when the first command of user is read_set.
+bool readIsValid(char parsedLine[], int ARGS_NUM);//this check is when the first command of user is read_set.
 
 
 

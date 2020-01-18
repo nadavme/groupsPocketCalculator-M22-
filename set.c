@@ -53,7 +53,7 @@ bool bitIsOn(char cell, int bit)
  * @param set
  * @param parsedLine
  */
-void read_set(set set, char* parsedLine)
+void read_set(set set, char* parsedLine, int ARGS_NUM)
 {
     int i = 2;
     while ((i < ARGS_NUM-2)&& (parsedLine[i] != -1))

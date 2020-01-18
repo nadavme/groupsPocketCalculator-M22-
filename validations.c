@@ -69,7 +69,7 @@ bool isValid(set* sets[])//this check is for all other functions/
  * @param parsedLine
  * @return
  */
-bool readIsValid(char* parsedLine)//this check is when the first command of user is read_set.
+bool readIsValid(char* parsedLine, int ARGS_NUM)//this check is when the first command of user is read_set.
 {
     int i;
     if(parsedLine[ARGS_NUM - 1] == -1)

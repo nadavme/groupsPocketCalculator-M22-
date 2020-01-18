@@ -5,6 +5,9 @@
 #include "myset.h"
 #include "set.h"
 
+int ARGS_NUM = 0;
+
+
 /*!
  *
  */
@@ -19,10 +22,14 @@ void excuteCommand()
 {
     char line[120];
     char lineWithNoCommas[120];
-    printf("Hello,please enter a command and sets:\n");
-    while (fgets(line, 120, stdin) != NULL)/*Keep going until EOF.*/
+    do
     {
-        printf("~\n");
+            printf("Hello,please enter a command and sets:\n");
+            if (!fgets(line, 120, stdin))
+            {
+                printf("ERROR: EOF was reached but 'stop' command weren't given");
+                exit(0);
+            }
         ARGS_NUM = 0;
         printf("%s\n", line);/*Printing the input line as is*/
         strcpy(lineWithNoCommas, commasReplacer(line));/*Reaplace the cammas by spaces*/
@@ -34,8 +41,7 @@ void excuteCommand()
             matchSet((char *) parseSets4OtherFunctions(pL));/*Match 3 sets for other commands.*/
         }
     }
-    printf("ERROR: EOF was reached but 'stop' command weren't given");
-    exit(0);
+    while (strcmp(line,"stop") != 0);
 }
 
 
@@ -118,9 +124,9 @@ void  matchCommand(char* command, char* parsedLine)
     if(strcmp(command, "read_set")==0)
     {
         set* set = matchSet(parseSet4ReadOrPrint(parsedLine));
-        if (readIsValid(parsedLine))
+        if (readIsValid(parsedLine, ARGS_NUM))
         {
-            read_set(set, parsedLine);
+            read_set(set, parsedLine, ARGS_NUM);
         }
     }
 
