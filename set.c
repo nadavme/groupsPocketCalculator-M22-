@@ -6,6 +6,11 @@
 #include "validations.h"
 
 
+/*!
+ * See in header file.
+ * @param set
+ * @param parseLine
+ */
 void print_set(set set, char* parseLine)
 {
     if (printIsValid(set, parseLine))
@@ -31,13 +36,23 @@ void print_set(set set, char* parseLine)
 }
 
 
-
+/*!
+ * See in header file.
+ * @param cell
+ * @param bit
+ * @return
+ */
 bool bitIsOn(char cell, int bit)
 {
     return (cell & (1<<bit)) != 0;
 }
 
 
+/*!
+ * See in header file.
+ * @param set
+ * @param parsedLine
+ */
 void read_set(set set, char* parsedLine)
 {
     int i = 2;
@@ -48,31 +63,18 @@ void read_set(set set, char* parsedLine)
 }
 
 
+/*!
+ * See in header file.
+ * @param setx
+ * @param num
+ */
 void get_num(set setx, int num) {
     int bit, byte;
     byte = (num+1)/8;
     bit = (num+1)%8;
     setx[byte] = setx[byte]|(1 << bit);
 }
-//void read_set(set set,char line[])
-//{
-//int bit, counter = 0;
-//commasReplacer(line);
-//char *token;
-//token = strtok(line, " ");
-//long byte = 0;
-//unsigned char a = 1;
-//
-//while((int) token != -1)
-//{
-//    strtoul(token, (char **) byte, 10);
-//    byte = (byte+1)/8;
-//    strtoul(token, (char **) bit, 10);
-//    bit = (bit+1)%8;
-//    set[byte] = set[byte]|(a<<(bit-1));
-//    token = strtok(NULL, " ");
-//    }
-//}
+
 
 /*!
  * See in header file.
@@ -90,7 +92,8 @@ void union_set(set a, set b, set c)
 }
 
 /*!
- * See in header file. * @param a
+ * See in header file.
+ * @param a
  * @param b
  * @param c
  */
@@ -104,7 +107,8 @@ void intersect_set(set a, set b, set c)
 }
 
 /*!
- * See in header file. * @param a
+ * See in header file.
+ * @param a
  * @param b
  * @param c
  */
@@ -119,7 +123,8 @@ void sub_set(set a, set b, set c)
 
 
 /*!
- * See in header file. * @param a
+ * See in header file.
+ * @param a
  * @param b
  * @param c
  */

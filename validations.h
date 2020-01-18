@@ -13,8 +13,9 @@
 #include <math.h>
 #include "set.h"
 
-
+/*This is a global variable that helps the program know how many input number are"*/
 int ARGS_NUM = 0;
+
 
 /*!
  *

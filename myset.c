@@ -5,12 +5,16 @@
 #include "myset.h"
 #include "set.h"
 
-
+/*!
+ *
+ */
 set SETA, SETB, SETC, SETD, SETE, SETF;
 
 
 
-
+/*!
+ * See in header file.
+ */
 void excuteCommand()
 {
     char line[120];
@@ -18,10 +22,11 @@ void excuteCommand()
     printf("Hello,please enter a command and sets:\n");
     while (fgets(line, 120, stdin) != NULL)/*Keep going until EOF.*/
     {
+        printf("~\n");
         ARGS_NUM = 0;
         printf("%s\n", line);/*Printing the input line as is*/
         strcpy(lineWithNoCommas, commasReplacer(line));/*Reaplace the cammas by spaces*/
-        char* pL =parseInputLine(lineWithNoCommas);/*parse the input line to tokens separated by spaces.*/
+        char* pL = (char *) parseInputLine(lineWithNoCommas);/*parse the input line to tokens separated by spaces.*/
         matchCommand(parseCommand(pL), pL);/*Extract the command from input.*/
         matchSet(parseSet4ReadOrPrint(pL));/*Match a single set from the input to read_set ot print_set.*/
         if (doubleCommasChecker(line))
@@ -34,17 +39,9 @@ void excuteCommand()
 }
 
 
-//bool inputChecker(char line[120]);
-//{
-//    if(!fgets(line, 120, stdin)) return false;
-//    else
-//        {
-//        return true;
-//        }
-//}
 
 /*!
- *
+ * See in header file.
  * @param line
  */
 const char * commasReplacer(char* line)
@@ -59,6 +56,13 @@ const char * commasReplacer(char* line)
         i++;
     }
 }
+
+
+/*!
+ * See in header file.
+ * @param line
+ * @return
+ */
 bool doubleCommasChecker(char* line)
 {
     char *token;
@@ -83,6 +87,11 @@ bool doubleCommasChecker(char* line)
 }
 
 
+/*!
+ * See in header file.
+ * @param line
+ * @return
+ */
 char** parseInputLine(char line[])
 {
     char parsedLineLocal[40];
@@ -98,6 +107,12 @@ char** parseInputLine(char line[])
     return parsedLineLocal;
 }
 
+
+/*!
+ *  * See in header file.
+ * @param command
+ * @param parsedLine
+ */
 void  matchCommand(char* command, char* parsedLine)
 {
     if(strcmp(command, "read_set")==0)
@@ -145,7 +160,11 @@ void  matchCommand(char* command, char* parsedLine)
 
 }
 
-
+/*!
+ *  * See in header file.
+ * @param setName
+ * @return
+ */
 set*  matchSet(char* setName)
 {
 
@@ -169,30 +188,39 @@ set*  matchSet(char* setName)
 }
 
 
-//set* matchSets(char* parsedLine)
-//{
-//    set* sets = parseSets4OtherFunctions(parsedLine);
-//    return sets;
-//}
 
+/*!
+ * See in header file.
+ * @param parsedLine
+ * @return
+ */
 char* parseCommand(char* parsedLine)
 {
     return &parsedLine[0];
 }
 
-
+/*!
+ * See in header file.
+ * @param parsedLine
+ * @return
+ */
 char* parseSet4ReadOrPrint(char* parsedLine)
 {
     return &parsedLine[1];
 }
 
+/*!
+ * See in header file.
+ * @param parsedLine
+ * @return
+ */
 set* parseSets4OtherFunctions(char *parsedLine)
 {
     int i = 1;
     set* sets[3];
     while((parsedLine[i] != NULL) && (i<5))
     {
-        strcpy((char *) sets[i - 1], (const char *) matchSet((char *) parsedLine[i]));
+        strcpy((char *) sets[i - 1], (const char *) matchSet(parsedLine[i]));
         i++;
     }
     return *sets;
@@ -201,5 +229,5 @@ set* parseSets4OtherFunctions(char *parsedLine)
 
 int main()
 {
-
+    excuteCommand();
 }

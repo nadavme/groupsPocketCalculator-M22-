@@ -10,12 +10,9 @@
 #include <stdlib.h>
 #include "set.h"
 #include <stdbool.h>
+#include "validations.h"
 
 
-//enum StringsOfSets {SETA, SETB, SETC, SETD, SETE, SETF};
-
-
-//bool inputChecker(char line[120]);
 
 /*!
  * the function takes all commas and replace them bu space.

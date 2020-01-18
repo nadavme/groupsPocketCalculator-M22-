@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "validations.h"
+//#include "validations.h"
 
 
 /*!
@@ -48,7 +48,7 @@ void print_set(set set, char* parsedLine);
  * @param set
  * @param parsedLine
  */
-void read_set(set set, char* parsedLine)
+void read_set(set set, char* parsedLine);
 
 
 /*!
