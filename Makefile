@@ -1,5 +1,5 @@
 myprog: set.o myset.o
-	gcc -g -ansi -Wall -pedantic set.o myset.o -o myprog
+	gcc -g -ansi -Wall -pedantic set.o myset.o validations.o -o myprog
 
 set.o: set.c set.h
 	gcc -c -ansi -Wall -pedantic set.c -o set.o
