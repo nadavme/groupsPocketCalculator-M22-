@@ -99,7 +99,7 @@ bool doubleCommasChecker(char* line)
  * @param line
  * @return
  */
-char** parseInputLine(char line[])
+char* parseInputLine(char* line)
 {
     static char parsedLineLocal[40][10];
 
@@ -113,7 +113,7 @@ char** parseInputLine(char line[])
         token = strtok(NULL, " \t");
         i++;
     }
-    return (char **) parsedLineLocal;
+    return *parsedLineLocal;
 }
 
 

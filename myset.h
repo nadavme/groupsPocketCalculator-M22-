@@ -40,7 +40,7 @@ bool doubleCommasChecker(char* line);
  * @param line is the input line.
  * @return the parsed line.
  */
-char** parseInputLine(char line[]);
+char* parseInputLine(char* line);
 
 
 
