@@ -28,12 +28,14 @@ typedef char set[16];
  */
 bool bitIsOn(char cell, int bit);
 
+
 /*!
- *
- * @param set
- * @param num
+ * This function adds one number at a time to a set.
+ * @param set is the set we work on.
+ * @param num is the number to add.
  */
 void get_num(set set,int num);
+
 
 /*!
  * The function goes over the set, bit by bit, checks is its on- and if it is, prints it.
@@ -43,51 +45,51 @@ void print_set(set set, char* parsedLine);
 
 
 /*!
- *
- * @param set
- * @param parsedLine
+ * This function adds the values from inputto a set.
+ * @param set is the set we work on.
+ * @param parsedLine is the list of tokens.
  */
 void read_set(set set, char* parsedLine, int ARGS_NUM);
 
 
 /*!
  * The function takes two sets and reads into a third set all the numbers, of the two sets.
- * @param a
- * @param b
- * @param c
+ * @param a set
+ * @param b set
+ * @param c set
  */
 void union_set(set a, set b, set c);
 
 
 /*!
- *
- * @param a
- * @param b
- * @param c
+ * The function takes two sets and reads into a third set all the numbers combined the two sets.
+ * @param a set
+ * @param b set
+ * @param c set
  */
 void intersect_set(set a, set b, set c);
 
 
 /*!
- *
- * @param a
- * @param b
- * @param c
+ * The function takes two sets and reads into a third set all the numbers the gap between the two sets.
+ * @param a set
+ * @param b set
+ * @param c set
  */
 void sub_set(set a, set b, set c);
 
 
 /*!
- *
- * @param a
- * @param b
- * @param c
+ * The function takes two sets and reads into a third set all the numbers the symmetrical gap between the two sets.
+ * @param a set
+ * @param b set
+ * @param c set
  */
 void symdiff_set(set a, set b, set c);
 
 
 /*!
- *
+ * The function stop the running of the program.
  */
 void stop();
 

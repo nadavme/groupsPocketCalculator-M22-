@@ -25,17 +25,17 @@ void excuteCommand()
     do
     {
             printf("Hello,please enter a command and sets:\n");
-            if (!fgets(line, 120, stdin))
+            if (!gets(line))
             {
                 printf("ERROR: EOF was reached but 'stop' command weren't given");
                 exit(0);
             }
         ARGS_NUM = 0;
         printf("%s\n", line);/*Printing the input line as is*/
-        strcpy(lineWithNoCommas, commasReplacer(line));/*Reaplace the cammas by spaces*/
-        char* pL = (char *) parseInputLine(lineWithNoCommas);/*parse the input line to tokens separated by spaces.*/
+        strcpy(lineWithNoCommas, commasReplacer(line));/*Replace the commas by spaces*/
+        char** pL = parseInputLine(lineWithNoCommas);/*parse the input line to tokens separated by spaces.*/
         matchCommand(parseCommand(pL), pL);/*Extract the command from input.*/
-        matchSet(parseSet4ReadOrPrint(pL));/*Match a single set from the input to read_set ot print_set.*/
+//        matchSet(parseSet4ReadOrPrint(pL));/*Match a single set from the input to read_set ot print_set.*/
         if (doubleCommasChecker(line))
         {
             matchSet((char *) parseSets4OtherFunctions(pL));/*Match 3 sets for other commands.*/
@@ -50,7 +50,7 @@ void excuteCommand()
  * See in header file.
  * @param line
  */
-const char * commasReplacer(char* line)
+char* commasReplacer(char* line)
 {
     int i= 0;
     while(line[i] != '\0')
@@ -61,6 +61,7 @@ const char * commasReplacer(char* line)
         }
         i++;
     }
+    return line;
 }
 
 
@@ -100,17 +101,19 @@ bool doubleCommasChecker(char* line)
  */
 char** parseInputLine(char line[])
 {
-    char parsedLineLocal[40];
+    static char parsedLineLocal[40][10];
+
     int i =0;
     char *token;
     token = strtok(line, " \t");
     while(token != NULL)
     {
-        strcpy(&parsedLineLocal[i], token);
+        strcpy(parsedLineLocal[i], token);
         ARGS_NUM ++;
         token = strtok(NULL, " \t");
+        i++;
     }
-    return parsedLineLocal;
+    return (char **) parsedLineLocal;
 }
 
 
@@ -220,10 +223,10 @@ char* parseSet4ReadOrPrint(char* parsedLine)
  * @param parsedLine
  * @return
  */
-set* parseSets4OtherFunctions(char *parsedLine)
+set* parseSets4OtherFunctions(char* parsedLine)
 {
     int i = 1;
-    set* sets[3];
+    static set* sets[3];
     while((parsedLine[i] != NULL) && (i<5))
     {
         strcpy((char *) sets[i - 1], (const char *) matchSet(parsedLine[i]));
